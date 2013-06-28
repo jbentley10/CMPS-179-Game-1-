@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title>Three.js Cube</title>
+		<style>canvas { width: 100%; height: 100% }</style>
+	</head>
+	<body>
+		<script src="three.min.js"></script>
+        <script src="three.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+            
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+            
+            /*
+            // Create the cube
+			var geometry = new THREE.CubeGeometry(2, 1, 3);
+			var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+			var cube = new THREE.Mesh(geometry, material);
+            cube.position.x = -3;
+            cube.position.y = -1;
+			scene.add(cube);
+            */
+             
+            // Create the planet Mercury
+            var mercury_geometry = new THREE.SphereGeometry(1);
+            var mercury_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var mercury = new THREE.Mesh(mercury_geometry, mercury_material);
+            mercury.position.x = 0;
+            mercury.position.y = 0;
+            scene.add(mercury);
+            
+            // Create the planet earth
+            var venus_geometry = new THREE.SphereGeometry(2);
+            var venus_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var venus = new THREE.Mesh(venus_geometry, venus_material);
+            venus.position.x = 10;
+            venus.position.y = 0;
+            scene.add(venus);
+            
+            // Create the planet Earth
+            var earth_geometry = new THREE.SphereGeometry(3);
+            var earth_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var earth = new THREE.Mesh(earth_geometry, earth_material);
+            earth.position.x = 20;
+            earth.position.y = 0;
+            scene.add(earth);
+            
+            // Create the planet mars
+            var mars_geometry = new THREE.SphereGeometry(5);
+            var mars_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var mars = new THREE.Mesh(mars_geometry, mars_material);
+            mars.position.x = 35;
+            mars.position.y = 0;
+            scene.add(mars);
+            
+            // Create the planet jupiter
+            var jupiter_geometry = new THREE.SphereGeometry(8);
+            var jupiter_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var jupiter = new THREE.Mesh(jupiter_geometry, jupiter_material);
+            jupiter.position.x = 60;
+            jupiter.position.y = 0;
+            scene.add(jupiter);
+            
+            // Add a sphere
+            var radius2 = 5;
+            segments2 = 50;
+            rings2 = 50;
+            
+            // create a new mesh 
+            var sphere2 = new THREE.Mesh(new THREE.SphereGeometry(radius2,segments2,rings2),sphere2Material);
+            
+            // add the sphere to the scene
+            scene.add(sphere2);
+            
+			camera.position.z = 78;
+            
+            // Add the sphere's material
+            var sphere2Material = new THREE.MeshBasicMaterial({
+              color: 0xCC000
+            })
+            
+            sphere2Material.wireframeLinewidth = 5.0;
+            
+            // create a point light
+            var pointLight = new THREE.PointLight(0xFFFFF);
+            
+            // set its position
+            pointLight.position.x = 10;
+            pointLight.position.y = 50;
+            pointLight.position.z = 130;
+            
+            // add to the scene
+            scene.add(pointLight);
+            
+			var render = function () {
+				requestAnimationFrame(render);
+                
+                // Set the rotation speed of the objects
+				//cube.rotation.x += 0.02;
+				//cube.rotation.y += 0.01;
+                
+                mercury.rotation.x += 0.02;
+                mercury.rotation.y += 0.01;
+                
+                venus.rotation.x += 0.03;
+                venus.rotation.y += 0.02;
+                
+                earth.rotation.x += 0.03;
+                earth.rotation.y += 0.02;
+                
+                mars.rotation.x += 0.03;
+                mars.rotation.y += 0.02;
+                
+                jupiter.rotation.x += 0.01;
+                jupiter.rotation.y += 0.03;
+                
+				renderer.render(scene, camera);
+			};
+            
+			render();
+        </script>
+	</body>
+</html>

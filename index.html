@@ -64,6 +64,30 @@
             jupiter.position.y = 0;
             scene.add(jupiter);
             
+            // Create the planet saturn
+            var saturn_geometry = new THREE.SphereGeometry(13);
+            var saturn_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var saturn = new THREE.Mesh(saturn_geometry, saturn_material);
+            saturn.position.x = 90;
+            saturn.position.y = 0;
+            scene.add(saturn);
+            
+            // Create the planet uranus
+            var uranus_geometry = new THREE.SphereGeometry(21);
+            var uranus_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var uranus = new THREE.Mesh(uranus_geometry, uranus_material);
+            uranus.position.x = 130;
+            uranus.position.y = 0;
+            scene.add(uranus);
+            
+            // Create the planet neptune
+            var neptune_geometry = new THREE.SphereGeometry(34);
+            var neptune_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            var neptune = new THREE.Mesh(neptune_geometry, neptune_material);
+            neptune.position.x = 200;
+            neptune.position.y = 0;
+            scene.add(neptune);
+            
             // Add a sphere
             var radius2 = 5;
             segments2 = 50;
@@ -75,7 +99,7 @@
             // add the sphere to the scene
             scene.add(sphere2);
             
-			camera.position.z = 78;
+			camera.position.z = 258;
             
             // Add the sphere's material
             var sphere2Material = new THREE.MeshBasicMaterial({
@@ -116,6 +140,15 @@
                 
                 jupiter.rotation.x += 0.01;
                 jupiter.rotation.y += 0.03;
+                
+                saturn.rotation.x += 0.01;
+                saturn.rotation.y += 0.03;
+                
+                uranus.rotation.x += 0.01;
+                uranus.rotation.y += 0.03;
+                
+                neptune.rotation.x += 0.01;
+                neptune.rotation.y += 0.03;
                 
 				renderer.render(scene, camera);
 			};

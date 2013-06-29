@@ -88,25 +88,94 @@
             neptune.position.y = 0;
             scene.add(neptune);
             
-            // Add a sphere
-            var radius2 = 5;
+            // Add a sphere for Mercury
+            var radius1 = 20;
+            segments1 = 1;
+            rings1 = 1;
+            
+            // Add a sphere for Venus
+            var radius2 = 30;
+            
+            // Add a sphere for Earth
+            var radius3 = 40;
+            
+            // Add a sphere for Mars
+            var radius4 = 50;
+            
+            // Add a sphere for Juptier
+            var radius5 = 60;
+            
+            // Add a sphere for Saturn
+            var radius6 = 70;
+            
+            // Add a sphere for Neptune
+            var radius7 = 80;
+            
+            // Add a sphere for Uranus
+            var radius8 = 90;
+            
+            // Add a sphere for the background
+            var radius9 = 300;
             segments2 = 50;
             rings2 = 50;
             
-            // create a new mesh 
-            var sphere2 = new THREE.Mesh(new THREE.SphereGeometry(radius2,segments2,rings2),sphere2Material);
+            // create a new mesh for Mercury 
+            var sphere_mercury = new THREE.Mesh(new THREE.SphereGeometry(radius1,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Venus
+            var sphere_venus = new THREE.Mesh(new THREE.SphereGeometry(radius2,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Earth
+            var sphere_earth = new THREE.Mesh(new THREE.SphereGeometry(radius3,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Mars
+            var sphere_mars = new THREE.Mesh(new THREE.SphereGeometry(radius4,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Jupiter
+            var sphere_jupiter = new THREE.Mesh(new THREE.SphereGeometry(radius5,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Saturn
+            var sphere_saturn = new THREE.Mesh(new THREE.SphereGeometry(radius6,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Uranus
+            var sphere_uranus = new THREE.Mesh(new THREE.SphereGeometry(radius7,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for Neptune
+            var sphere_neptune = new THREE.Mesh(new THREE.SphereGeometry(radius8,segments1,rings1),sphere1Material);
+            
+            // Create a new mesh for the background
+            var sphere_background = new THREE.Mesh(new THREE.SphereGeometry(radius9,segments2,rings2),sphere1Material);
+
             
             // add the sphere to the scene
-            scene.add(sphere2);
+            scene.add(sphere_mercury);
+            sphere_mercury.position.x = 0;
+            scene.add(sphere_venus);
+            sphere_venus.position.x = 10
+            scene.add(sphere_earth);
+            sphere_earth.position.x = 20
+            scene.add(sphere_mars);
+            sphere_mars.position.x = 35
+            scene.add(sphere_jupiter);
+            sphere_jupiter.position.x = 60
+            scene.add(sphere_saturn);
+            sphere_saturn.position.x = 90
+            scene.add(sphere_uranus);
+            sphere_uranus.position.x = 130;
+            scene.add(sphere_neptune);
+            sphere_neptune.position.x = 200;
+            scene.add(sphere_background);
+            sphere_background.position.x = 0;
             
-			camera.position.z = 258;
+            camera.position.x = 70;
+			camera.position.z = 180;
             
-            // Add the sphere's material
-            var sphere2Material = new THREE.MeshBasicMaterial({
+            // Add material for the spheres
+            var sphere1Material = new THREE.MeshBasicMaterial({
               color: 0xCC000
             })
             
-            sphere2Material.wireframeLinewidth = 5.0;
+            sphere1Material.wireframeLinewidth = 5.0;
             
             // create a point light
             var pointLight = new THREE.PointLight(0xFFFFF);

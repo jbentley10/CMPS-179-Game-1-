@@ -1,12 +1,13 @@
 <html>
 	<head>
-		<title>Three.js Cube</title>
+		<title>Three.js Solar System</title>
 		<style>canvas { width: 100%; height: 100% }</style>
 	</head>
 	<body>
 		<script src="three.min.js"></script>
         <script src="three.js"></script>
 		<script>
+            var PI = 3.14159
 			var scene = new THREE.Scene();
 			camera = new THREE.OrthographicCamera(
                                                   window.innerWidth / -2,   // Left
@@ -25,24 +26,24 @@
 			renderer.setSize(window.innerWidth, window.innerHeight);
 			document.body.appendChild(renderer.domElement);
             
-            /*
-            // Create the cube
-			var geometry = new THREE.CubeGeometry(2, 1, 3);
-			var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-			var cube = new THREE.Mesh(geometry, material);
-            cube.position.x = -3;
-            cube.position.y = -1;
-			scene.add(cube);
-            */
-            
+            // Initialize the sizes of the planets to reflect their actual sizes
+            // Also initialize their position to be on the outside of their sphere
             var earthGeometry = 1;
+            var earthPosition = earthGeometry / 2;
             var mercuryGeometry = .383;
+            var mercuryPosition = mercuryGeometry / 2;
             var venusGeometry = .950;
+            var venusPosition = venusGeometry / 2;
             var marsGeometry = .532;
+            var marsPosition = marsGeometry / 2;
             var jupiterGeometry = 10.97;
+            var jupiterPosition = jupiterGeometry / 2;
             var saturnGeometry = 9.14;
+            var saturnPosition = saturnGeometry / 2;
             var uranusGeometry = 3.98;
+            var uranusPosition = uranusGeometry / 2;
             var neptuneGeometry = 3.86;
+            var neptunePosition = neptuneGeometry / 2;
              
             // Create the planet Mercury
             var mercury_geometry = new THREE.SphereGeometry(mercuryGeometry);
@@ -96,7 +97,7 @@
             var uranus_geometry = new THREE.SphereGeometry(uranusGeometry);
             var uranus_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
             var uranus = new THREE.Mesh(uranus_geometry, uranus_material);
-            uranus.position.x = 130;
+            uranus.position.x = 120;
             uranus.position.y = 0;
             scene.add(uranus);
             
@@ -104,74 +105,72 @@
             var neptune_geometry = new THREE.SphereGeometry(neptuneGeometry);
             var neptune_material = new THREE.MeshBasicMaterial({color: 0x00ff00});
             var neptune = new THREE.Mesh(neptune_geometry, neptune_material);
-            neptune.position.x = 200;
+            neptune.position.x = 135;
             neptune.position.y = 0;
             scene.add(neptune);
             
             // Add a sphere for Mercury, radius is 10x as big as planet
-            var radius1 = mercuryGeometry;
-            segments1 = 1;
+            var radius1 = mercuryGeometry * 10;
+            segments1 = 50;
             rings1 = 0;
-            
             
             // Add a sphere for the background
             var radius9 = 300;
-            segments2 = 50;
-            rings2 = 50;
+            segments2 = 50;  // Adjust vertical rings
+            rings2 = 50;    // Adjust horizontal rings 
             
             // Add a sphere for Venus
-            var radius2 = venusGeometry;
+            var radius2 = venusGeometry * 10;
             
             // Add a sphere for Earth
-            var radius3 = earthGeometry;
+            var radius3 = earthGeometry * 10;
             
             // Add a sphere for Mars
-            var radius4 = marsGeometry;
+            var radius4 = marsGeometry * 10;
             
             // Add a sphere for Juptier
-            var radius5 = jupiterGeometry;
+            var radius5 = jupiterGeometry * 10;
             
             // Add a sphere for Saturn
-            var radius6 = saturnGeometry;
+            var radius6 = saturnGeometry * 10;
             
             // Add a sphere for Neptune
-            var radius7 = neptuneGeometry;
+            var radius7 = neptuneGeometry * 10;
             
             // Add a sphere for Uranus
-            var radius8 = uranusGeometry;
+            var radius8 = uranusGeometry * 10;
             
             // create a new mesh for Mercury
-            var sphere_mercury = new THREE.Mesh(new THREE.SphereGeometry(radius1,segments1,rings1),sphere1Material);
+            var sphere_mercury = new THREE.Mesh(new THREE.CircleGeometry(radius1,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Venus
-            var sphere_venus = new THREE.Mesh(new THREE.SphereGeometry(radius2,segments1,rings1),sphere1Material);
+            var sphere_venus = new THREE.Mesh(new THREE.CircleGeometry(radius2,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Earth
-            var sphere_earth = new THREE.Mesh(new THREE.SphereGeometry(radius3,segments1,rings1),sphere1Material);
+            var sphere_earth = new THREE.Mesh(new THREE.CircleGeometry(radius3,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Mars
-            var sphere_mars = new THREE.Mesh(new THREE.SphereGeometry(radius4,segments1,rings1),sphere1Material);
+            var sphere_mars = new THREE.Mesh(new THREE.CircleGeometry(radius4,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Jupiter
-            var sphere_jupiter = new THREE.Mesh(new THREE.SphereGeometry(radius5,segments1,rings1),sphere1Material);
+            var sphere_jupiter = new THREE.Mesh(new THREE.CircleGeometry(radius5,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Saturn
-            var sphere_saturn = new THREE.Mesh(new THREE.SphereGeometry(radius6,segments1,rings1),sphere1Material);
+            var sphere_saturn = new THREE.Mesh(new THREE.CircleGeometry(radius6,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Uranus
-            var sphere_uranus = new THREE.Mesh(new THREE.SphereGeometry(radius7,segments1,rings1),sphere1Material);
+            var sphere_uranus = new THREE.Mesh(new THREE.CircleGeometry(radius7,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for Neptune
-            var sphere_neptune = new THREE.Mesh(new THREE.SphereGeometry(radius8,segments1,rings1),sphere1Material);
+            var sphere_neptune = new THREE.Mesh(new THREE.CircleGeometry(radius8,segments1,15,2*PI),sphere1Material);
             
             // Create a new mesh for the background
-            var sphere_background = new THREE.Mesh(new THREE.SphereGeometry(radius9,segments2,rings2),sphere1Material);
+            var sphere_background = new THREE.Mesh(new THREE.SphereGeometry(radius9,segments2,45,2*PI),sphere1Material);
+     
             
-
-            
-            // add the sphere to the scene
+            // Add the spheres of each planet to the scene, and position them
             scene.add(sphere_mercury);
-            sphere_mercury.position.x = 0 - (mercuryGeometry);
+            sphere_mercury.position.x = -10 - (mercuryGeometry);
             scene.add(sphere_venus);
             sphere_venus.position.x = 0 - (venusGeometry);
             scene.add(sphere_earth);
@@ -207,21 +206,19 @@
             // add to the scene
             scene.add(pointLight);
             
+            // Defined in the RequestAnimationFrame.js file, this function means that the
+            // animate function is called upon timeout:
             var animate = function(){
-                // Defined in the RequestAnimationFrame.js file, this function means that the
-                // animate function is called upon timeout:
                 requestAnimationFrame( animate );
                 
                 render();
             }
             
+            // Set each planet's rotation speed and update the camera
 			var render = function () {
 				requestAnimationFrame(render);
                 
-                // Set the rotation speed of the objects
-				//cube.rotation.x += 0.02;
-				//cube.rotation.y += 0.01;
-                
+                // Set the rotation speed of the planets
                 mercury.rotation.x += 0.02;
                 mercury.rotation.y += 0.01;
                 
@@ -245,6 +242,31 @@
                 
                 neptune.rotation.x += 0.01;
                 neptune.rotation.y += 0.03;
+                
+                // Set the rotation speed of the planets' rings
+                sphere_mercury.rotation.x += 0.03;
+                sphere_mercury.rotation.y += 0.02;
+                
+                sphere_venus.rotation.x += 0.03;
+                sphere_venus.rotation.y += 0.02;
+                
+                sphere_earth.rotation.x += 0.03;
+                sphere_earth.rotation.y += 0.02;
+                
+                sphere_mars.rotation.x += 0.03;
+                sphere_mars.rotation.y += 0.02;
+                
+                sphere_jupiter.rotation.x += 0.03;
+                sphere_jupiter.rotation.y += 0.02;
+                
+                sphere_saturn.rotation.x += 0.03;
+                sphere_saturn.rotation.y += 0.02;
+                
+                sphere_uranus.rotation.x += 0.03;
+                sphere_uranus.rotation.y += 0.02;
+                
+                sphere_neptune.rotation.x += 0.03;
+                sphere_neptune.rotation.y += 0.02;
                 
 				renderer.render(scene, camera);
                 
